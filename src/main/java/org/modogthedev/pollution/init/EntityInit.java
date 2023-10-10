@@ -12,5 +12,5 @@ import org.modogthedev.pollution.main.PollutionEntity;
 public class EntityInit {
     public static final DeferredRegister<EntityType<?>> ENITITES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Pollution.MODID);
 
-    public  static  final RegistryObject<EntityType<PollutionEntity>> POLLUTION_ENTITY = ENITITES.register("pollution", ()-> EntityType.Builder.of(PollutionEntity::new, MobCategory.MISC).sized(1,1).build(new ResourceLocation(Pollution.MODID, "pollution").toString()));
+    public  static  final RegistryObject<EntityType<PollutionEntity>> POLLUTION_ENTITY = ENITITES.register("pollution", ()-> EntityType.Builder.of(PollutionEntity::new, MobCategory.MISC).sized(0.5F,0.5F).build(new ResourceLocation(Pollution.MODID, "pollution").toString()));
 }
