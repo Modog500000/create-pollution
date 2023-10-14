@@ -19,6 +19,6 @@ public class ModItems {
             return POLLUTED_SOIL.get().getDefaultInstance();
         }
     };
-    public static final RegistryObject<Item> POLLUTED_SOIL = ITEMS.register("polluted_soil", () -> new BlockItem(ModBlocks.POLLUTED_SOIL.get(), new Item.Properties().tab(ModCreativeModeTabs.TAB)));
+    public static final RegistryObject<Item> POLLUTED_SOIL = ITEMS.register("polluted_soil", () -> new BlockItem(ModBlocks.POLLUTED_SOIL.get(), new Item.Properties().tab(TAB)));
 
 }

@@ -11,5 +11,5 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBlocks {
         public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Pollution.MODID);
-    public static final RegistryObject<Block> POLLUTED_SOIL = BLOCKS.register("polluted_soil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
+        public static final RegistryObject<Block> POLLUTED_SOIL = BLOCKS.register("polluted_soil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
 }

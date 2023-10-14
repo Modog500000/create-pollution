@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "pollution.refmap.json",
   "mixins": [
+    "ModBlazeBurnerPollution",
+    "ModFirePollution"
   ],
   "client": [
   ],
