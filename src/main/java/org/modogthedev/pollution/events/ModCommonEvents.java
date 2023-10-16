@@ -9,7 +9,4 @@ import org.modogthedev.pollution.main.PollutionEntity;
 
 @Mod.EventBusSubscriber(modid= Pollution.MODID,bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCommonEvents {
-    @SubscribeEvent
-    public static void entityAttributes(EntityAttributeCreationEvent event) {
-    }
 }

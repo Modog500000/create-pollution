@@ -61,12 +61,19 @@ public class PollutionEntity extends Entity {
     @Override
     public void tick() {
         this.fireImmune();
+        // Movement
         this.setNoGravity(false);
         this.setDeltaMovement(this.getDeltaMovement().x / 1.1, this.getDeltaMovement().y, this.getDeltaMovement().z / 1.1);
         this.setDeltaMovement(this.getDeltaMovement().x, this.getDeltaMovement().y + .00025, this.getDeltaMovement().z);
-        if (this.getY() > 319) {
-            this.kill();
+        if (this.getY() > 200) {
+            if (random.nextIntBetweenInclusive(0,40) == 40) {
+                this.entityData.set(DATA_GAS_AMOUNT, this.entityData.get(DATA_GAS_AMOUNT)-1);
+                if (this.entityData.get(DATA_GAS_AMOUNT) < 1) {
+                    this.kill();
+                }
+            }
         }
+        // Merge
         List<PollutionEntity> combineList = this.level.getEntitiesOfClass(PollutionEntity.class, this.getBoundingBox().inflate(0.1));
         if (this.entityData.get(DATA_GAS_AMOUNT) < 10) {
             if (combineList.size() > 1) {
@@ -87,6 +94,7 @@ public class PollutionEntity extends Entity {
                 }
             }
         }
+        // Collision
         if (this.getEntityData().get(DATA_GAS_AMOUNT) > 7) {
             List<LivingEntity> entitiesAffected = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(1));
             if (entitiesAffected.size() < 1) {
@@ -106,12 +114,20 @@ public class PollutionEntity extends Entity {
                 }
             }
         }
-        if (this.getEntityData().get(DATA_GAS_AMOUNT) > 6 && this.level.isRaining() && this.level.isRainingAt(this.blockPosition())) {
+        // Ground Pollution
+        if (this.getEntityData().get(DATA_GAS_AMOUNT) > 3 && this.level.isRaining() && this.level.isRainingAt(this.blockPosition()) && random.nextIntBetweenInclusive(0,100) == 100) {
             for (int i = (int) this.getY(); i > 0; i--) {
                 if (this.level.getBlockState(new BlockPos(((int) this.getX()),i,((int) this.getZ()))) == Blocks.GRASS_BLOCK.defaultBlockState() || this.level.getBlockState(new BlockPos(((int) this.getX()),i,((int) this.getZ()))) == Blocks.FARMLAND.defaultBlockState()) {
                     this.level.setBlock(new BlockPos(((int) this.getX()),i,((int) this.getZ())), ModBlocks.POLLUTED_SOIL.get().defaultBlockState(), 1);
                     return;
                 }
+            }
+        }
+        // Passive Decay
+        if (random.nextIntBetweenInclusive(0,1000) == 1000) {
+            this.entityData.set(DATA_GAS_AMOUNT, this.entityData.get(DATA_GAS_AMOUNT)-1);
+            if (this.entityData.get(DATA_GAS_AMOUNT) < 1) {
+                this.kill();
             }
         }
         this.setDeltaMovement(this.getDeltaMovement().add((double) +random.nextIntBetweenInclusive(-100,100)/10000,0,(double)+random.nextIntBetweenInclusive(-100,100)/10000));

@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.modogthedev.pollution.Pollution;
 import org.modogthedev.pollution.main.PollutionEntity;
 
-public class PollutionEntityModel extends EntityModel<PollutionEntity> {	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
+public class PollutionEntityModel<T extends PollutionEntity> extends EntityModel<T> {	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Pollution.MODID, "pollution"), "main");
 	private final ModelPart main;
 	public PollutionEntityModel (ModelPart root) {
@@ -26,7 +26,7 @@ public class PollutionEntityModel extends EntityModel<PollutionEntity> {	// This
 
 		PartDefinition main = parts.addOrReplaceChild("main", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-		return LayerDefinition.create(mesh, 16, 16);
+		return LayerDefinition.create(mesh, 64, 64);
 	}
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
