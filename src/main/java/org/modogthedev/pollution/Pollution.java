@@ -23,6 +23,7 @@ import net.minecraftforge.registries.RegistryObject;
 import org.modogthedev.pollution.main.ModBlocks;
 import org.modogthedev.pollution.init.EntityInit;
 import org.modogthedev.pollution.main.ModItems;
+import org.modogthedev.pollution.main.ModParticles;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -48,7 +49,7 @@ public class Pollution {
 
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
-
+        ModParticles.PARTICLE_TYPES.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

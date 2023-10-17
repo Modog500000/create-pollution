@@ -1,6 +1,5 @@
 package org.modogthedev.pollution.main;
 
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -8,18 +7,13 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -41,11 +35,11 @@ public class PollutionEntity extends Entity {
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag p_20052_) {
+    protected void readAdditionalSaveData(@NotNull CompoundTag p_20052_) {
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag p_20139_) {
+    protected void addAdditionalSaveData(@NotNull CompoundTag p_20139_) {
     }
 
     @Override
@@ -94,21 +88,21 @@ public class PollutionEntity extends Entity {
                 }
             }
         }
-        // Collision
+        // Collision Effects
         if (this.getEntityData().get(DATA_GAS_AMOUNT) > 7) {
             List<LivingEntity> entitiesAffected = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(1));
             if (entitiesAffected.size() < 1) {
                 COLLIDE_TICKS = 0;
             }
-            for (int i = 0; i < (entitiesAffected.size()); i++) {
-                COLLIDE_TICKS++;
 
+            for (LivingEntity livingEntity : entitiesAffected) {
+                COLLIDE_TICKS++;
                 if (COLLIDE_TICKS > 20) {
-                    entitiesAffected.get(i).addEffect(new MobEffectInstance(MobEffects.DARKNESS, 80, 0), this);
-                    if (COLLIDE_TICKS > 100) {
-                        entitiesAffected.get(i).addEffect(new MobEffectInstance(MobEffects.CONFUSION, 140, 0), this);
-                        if (COLLIDE_TICKS > 300) {
-                            entitiesAffected.get(i).addEffect(new MobEffectInstance(MobEffects.WITHER, 200, 0), this);
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 80, 0), this);
+                    if (COLLIDE_TICKS > 180) {
+                        livingEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 140, 0), this);
+                        if (COLLIDE_TICKS > 440) {
+                            livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 200, 0), this);
                         }
                     }
                 }
@@ -130,7 +124,12 @@ public class PollutionEntity extends Entity {
                 this.kill();
             }
         }
-        this.setDeltaMovement(this.getDeltaMovement().add((double) +random.nextIntBetweenInclusive(-100,100)/10000,0,(double)+random.nextIntBetweenInclusive(-100,100)/10000));
+        // Particles
+        if (this.getEntityData().get(DATA_GAS_AMOUNT) > 1) {
+            this.level.addParticle(ModParticles.FOG_PARTICLE.get(), this.getX(), this.getY(), this.getZ(),0,0,0);
+        }
+        // Movement
+        this.setDeltaMovement(this.getDeltaMovement().add((double) random.nextIntBetweenInclusive(-100,100) /10000,0,(double)random.nextIntBetweenInclusive(-100,100)/10000));
         this.move(MoverType.SELF, this.getDeltaMovement());
         this.refreshDimensions();
 }
@@ -147,16 +146,16 @@ public class PollutionEntity extends Entity {
         }
         return canBeCollidedWith(false);
     }
-    public boolean canBeCollidedWith(Boolean canbecollided) {
-        return canbecollided;
+    public boolean canBeCollidedWith(Boolean canBeCollided) {
+        return canBeCollided;
     }
     @Override
-    public void push(Entity p_20293_) {
+    public void push(@NotNull Entity p_20293_) {
         super.push(this);
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose p_19975_) {
+    public @NotNull EntityDimensions getDimensions(@NotNull Pose p_19975_) {
         return super.getDimensions(p_19975_).scale((float) (this.entityData.get(DATA_GAS_AMOUNT)*0.17));
     }
 }

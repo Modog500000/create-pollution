@@ -24,7 +24,7 @@ public class PollutionEntityModel<T extends PollutionEntity> extends EntityModel
 		var mesh = new MeshDefinition();
 		PartDefinition parts = mesh.getRoot();
 
-		PartDefinition main = parts.addOrReplaceChild("main", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+		parts.addOrReplaceChild("main", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		return LayerDefinition.create(mesh, 64, 64);
 	}
