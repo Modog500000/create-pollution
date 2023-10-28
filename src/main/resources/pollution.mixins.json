@@ -6,7 +6,8 @@
   "refmap": "pollution.refmap.json",
   "mixins": [
     "ModBlazeBurnerPollution",
-    "ModFirePollution"
+    "ModFirePollution",
+    "ModFurnacePollution"
   ],
   "client": [
   ],

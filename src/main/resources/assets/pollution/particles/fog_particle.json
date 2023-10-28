@@ -1,5 +1,8 @@
 {
   "textures": [
-    "pollution:fog_particle"
+    "pollution:fog_1",
+    "pollution:fog_2",
+    "pollution:fog_3",
+    "pollution:fog_4"
   ]
 }
