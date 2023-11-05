@@ -85,7 +85,6 @@ public class ModWorldPollution extends SavedData {
     }
     public ModWorldPollution() {
     }
-
     public ModWorldPollution(CompoundTag tag) {
         ListTag list = tag.getList("worldpollution", Tag.TAG_COMPOUND);
         for (Tag t : list) {

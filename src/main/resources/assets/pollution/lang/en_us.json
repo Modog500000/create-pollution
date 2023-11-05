@@ -1,5 +1,6 @@
 {
   "block.pollution.polluted_soil": "Polluted Soil",
+  "block.pollution.pollution_sensor": "Polluted Sensor",
 
   "entity.pollution.pollution": "Pollution",
 

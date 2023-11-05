@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "pollution:block/pollution_sensor"
+    }
+  }
+}

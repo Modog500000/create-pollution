@@ -12,6 +12,7 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.modogthedev.pollution.init.Messages;
 import org.modogthedev.pollution.init.EntityInit;
+import org.modogthedev.pollution.init.TileEntityInit;
 import org.modogthedev.pollution.main.ModBlocks;
 import org.modogthedev.pollution.main.ModItems;
 import org.modogthedev.pollution.main.ModParticles;
@@ -34,6 +35,7 @@ public class Pollution {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        TileEntityInit.TILE_ENTITY_TYPES.register(modEventBus);
         ModParticles.PARTICLE_TYPES.register(modEventBus);
         Messages.register();
 

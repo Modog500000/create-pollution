@@ -10,6 +10,7 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +28,7 @@ public class FogParticle extends TextureSheetParticle {
         this.zd = zd;
         this.quadSize = 5;
         this.lifetime = 100;
-        this.age = 1;
+        this.age = 10;
         this.setSpriteFromAge(spriteSet);
 
         this.rCol = 1f;

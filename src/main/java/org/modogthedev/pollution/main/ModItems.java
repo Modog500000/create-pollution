@@ -20,5 +20,6 @@ public class ModItems {
         }
     };
     public static final RegistryObject<Item> POLLUTED_SOIL = ITEMS.register("polluted_soil", () -> new BlockItem(ModBlocks.POLLUTED_SOIL.get(), new Item.Properties().tab(TAB)));
+    public static final RegistryObject<Item> POLLUTION_SENSOR = ITEMS.register("pollution_sensor", () -> new BlockItem(ModBlocks.POLLUTION_SENSOR.get(), new Item.Properties().tab(TAB)));
 
 }
