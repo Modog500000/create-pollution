@@ -1,8 +1,11 @@
 {
   "block.pollution.polluted_soil": "Polluted Soil",
-  "block.pollution.pollution_sensor": "Polluted Sensor",
+  "block.pollution.pollution_sensor": "Pollution Sensor",
 
   "entity.pollution.pollution": "Pollution",
 
-  "itemGroup.pollution" : "Create: Pollution & Fumes"
+  "itemGroup.pollution" : "Create: Pollution & Fumes",
+
+  "commands.pollution.success": "Set the pollution at %s, %s, %s to %s"  ,
+  "commands.pollution.get": "The pollution is %s"
 }

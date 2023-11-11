@@ -1,20 +1,2 @@
 {
-  "bonk" : {
-    "subtitle" : "sounds.australium.bonk",
-    "sounds": [
-      "australium:bonk"
-    ]
-  },
-  "crit" : {
-    "subtitle" : "sounds.australium.crit",
-    "sounds": [
-      "australium:crit"
-    ]
-  },
-  "medigun" : {
-    "subtitle" : "sounds.australium.medigun",
-    "sounds": [
-      "australium:medigun"
-    ]
-  }
 }

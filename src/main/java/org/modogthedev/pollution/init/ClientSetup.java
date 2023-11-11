@@ -7,7 +7,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.modogthedev.pollution.Pollution;
 import org.modogthedev.pollution.main.worldPollution.PollutionOverlay;
-import org.modogthedev.pollution.util.Config;
 
 @Mod.EventBusSubscriber(modid = Pollution.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientSetup {

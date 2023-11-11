@@ -1,7 +1,20 @@
 {
   "variants": {
-    "": {
-      "model": "pollution:block/pollution_sensor"
+    "facing=north": {
+      "model": "pollution:block/pollution_sensor",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "pollution:block/pollution_sensor",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "pollution:block/pollution_sensor",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "pollution:block/pollution_sensor",
+      "y": 0
     }
   }
 }

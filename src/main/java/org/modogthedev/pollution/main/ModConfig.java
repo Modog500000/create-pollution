@@ -13,6 +13,7 @@ public class ModConfig {
     public static ForgeConfigSpec.IntValue LARGE_PARTICLE_AMOUNT;
     public static ForgeConfigSpec.BooleanValue SMALL_PARTICLE_ENABLED;
     public static ForgeConfigSpec.BooleanValue LARGE_PARTICLE_ENABLED;
+    public static ForgeConfigSpec.BooleanValue DEBUG;
 
     public static void registerServerConfig(ForgeConfigSpec.Builder SERVER_BUILDER) {
         SERVER_BUILDER.comment("Settings for the pollution system").push("pollution");
@@ -51,6 +52,8 @@ public class ModConfig {
                 .comment("Small Particles Enabled").define("smallParticleEnabled", true);
         LARGE_PARTICLE_ENABLED = CLIENT_BUILDER
                 .comment("Large Particles Enabled").define("largeParticleEnabled", true);
+        DEBUG = CLIENT_BUILDER
+                .comment("Debug").define("debug", false);
 
         CLIENT_BUILDER.pop();
     }

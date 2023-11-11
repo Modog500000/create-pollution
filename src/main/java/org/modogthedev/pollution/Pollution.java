@@ -16,6 +16,7 @@ import org.modogthedev.pollution.init.TileEntityInit;
 import org.modogthedev.pollution.main.ModBlocks;
 import org.modogthedev.pollution.main.ModItems;
 import org.modogthedev.pollution.main.ModParticles;
+import org.modogthedev.pollution.main.worldPollution.ChunkPollutionManager;
 import org.modogthedev.pollution.main.worldPollution.PollutionEvents;
 import org.modogthedev.pollution.util.Config;
 import org.slf4j.Logger;
@@ -46,10 +47,15 @@ public class Pollution {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         setup();
+
     }
     public static void setup() {
         IEventBus bus = MinecraftForge.EVENT_BUS;
         bus.addListener(PollutionEvents::onWorldTick);
+        bus.addListener(ChunkPollutionManager::onChunkTick);
+        bus.addListener(ChunkPollutionManager::chunkLoad);
+        bus.addListener(ChunkPollutionManager::chunkUnload);
+        bus.addListener(ChunkPollutionManager::worldLoad);
     }
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code

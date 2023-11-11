@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
@@ -198,6 +199,19 @@ public class PollutionEntity extends Entity {
                         }
                     }
                 }
+                }
+            }
+        // Leaf Dissolve
+        if (this.level.getBlockState(this.blockPosition()).getBlock() instanceof LeavesBlock) {
+            if (random.nextIntBetweenInclusive(0, 40) == 0) {
+                if (random.nextIntBetweenInclusive(0, 40) == 0) {
+                    this.level.setBlock(this.blockPosition(), Blocks.AIR.defaultBlockState(), 0);
+                }
+            }
+            this.entityData.set(DATA_GAS_AMOUNT, this.entityData.get(DATA_GAS_AMOUNT) - 1);
+            changeWorldCurrentPollution(-1, source);
+            if (this.entityData.get(DATA_GAS_AMOUNT) < 1) {
+                this.kill();
             }
         }
         // Particles
@@ -219,15 +233,19 @@ public class PollutionEntity extends Entity {
     public void move(Vec3 vec3) {
         tryFit = true;
         this.refreshDimensions();
-        for (int i = 0; i < 20; i++) {
         BlockState state = this.level.getBlockState(new BlockPos((this.getX()+this.getDeltaMovement().x*10),(this.getY()+this.getDeltaMovement().y*10),(this.getZ()+this.getDeltaMovement().z*10)));
             if (AllTags.AllBlockTags.FAN_TRANSPARENT.matches(state)) {
                 this.setPos(this.position().add(this.getDeltaMovement()));
 
                 return;
-            }
+            } else {
+                this.move(MoverType.SELF, vec3);
         }
-        this.move(MoverType.SELF, vec3);
+        if (AllTags.AllBlockTags.FAN_TRANSPARENT.matches(this.level.getBlockState(this.blockPosition().above())) && this.getDeltaMovement().y > 0) {
+            this.setDeltaMovement(this.getDeltaMovement().x, this.getDeltaMovement().y+.0005, this.getDeltaMovement().z);
+            this.setPos(this.getPosition(0).add(new Vec3(0,this.getDeltaMovement().y,0)));
+
+        }
         tryFit = false;
         this.refreshDimensions();
     }

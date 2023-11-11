@@ -60,7 +60,10 @@ public class FogParticle extends TextureSheetParticle {
         public Particle createParticle(@NotNull SimpleParticleType particleType, @NotNull ClientLevel level,
                                        double x, double y, double z,
                                        double dx, double dy, double dz) {
-            return new FogParticle(level, x, y, z, this.sprites, dx, dy, dz);
+            FogParticle fogParticle = new FogParticle(level, x, y, z, this.sprites, dx, dy, dz);
+            fogParticle.pickSprite(sprites);
+            fogParticle.quadSize = (float) (Math.random()*4)+3;
+            return fogParticle;
         }
     }
 }

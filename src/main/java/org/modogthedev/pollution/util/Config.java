@@ -1,8 +1,12 @@
 package org.modogthedev.pollution.util;
 
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.registries.RegisterEvent;
+import org.modogthedev.pollution.main.worldPollution.PollutionOverlay;
 
 public class Config {
     public static void register() {

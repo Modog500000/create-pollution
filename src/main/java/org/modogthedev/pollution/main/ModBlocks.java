@@ -3,6 +3,7 @@ package org.modogthedev.pollution.main;
 import com.simibubi.create.AllBlocks;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.registries.RegistryObject;
 import org.modogthedev.pollution.Pollution;
 import net.minecraft.world.level.block.Block;

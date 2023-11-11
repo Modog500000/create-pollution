@@ -46,15 +46,31 @@ public class ModWorldPollution extends SavedData {
         ChunkPos chunkPos = new ChunkPos(pos);
         return pollutionCurrentMap.computeIfAbsent(chunkPos, cp -> new WorldCurrentPollution(0));
     }
+    public void softChangePollution(BlockPos pos, int amount) {
+        WorldPollution pollution = getPollutionInternal(pos);
+        int present = pollution.getPollution();
+        if (present > 0) {
+            pollution.setPollution(present + amount);
+        } else if (present < 0) {
+            pollution.setPollution(0);
+            LOGGER.info("Warning! A negative amount of pollution exists at " + String.valueOf(pos));
+        }
+            setDirty();
+    }
     public void changePollution(BlockPos pos, int amount) {
         WorldPollution pollution = getPollutionInternal(pos);
         int present = pollution.getPollution();
-            pollution.setPollution(present+amount);
-            setDirty();
-    }    public void changeCurrentPollution(BlockPos pos, int amount) {
+        pollution.setPollution(present + amount);
+        setDirty();
+    }
+    public void changeCurrentPollution(BlockPos pos, int amount) {
         WorldCurrentPollution pollution = getCurrentPollutionInternal(pos);
         int present = pollution.getPollution();
-            pollution.setPollution(present+amount);
+        if (present >= 0) {
+            pollution.setPollution(present + amount);
+        } else {
+            pollution.setPollution(0);
+        }
             setDirty();
     }
     public void tick(Level level) {

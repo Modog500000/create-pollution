@@ -6,6 +6,7 @@
   "refmap": "pollution.refmap.json",
   "mixins": [
     "ModBlazeBurnerPollution",
+    "ModCampfirePollution",
     "ModFirePollution",
     "ModFurnacePollution"
   ],
