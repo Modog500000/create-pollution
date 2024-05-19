@@ -3,14 +3,13 @@ package org.modogthedev.pollution.commands;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import org.modogthedev.pollution.main.worldPollution.ModWorldPollution;
+import org.modogthedev.pollution.system.worldPollution.ModWorldPollution;
 
 public class ChunkPollutionCommand {
     public ChunkPollutionCommand(CommandDispatcher<CommandSourceStack> dispatcher) {

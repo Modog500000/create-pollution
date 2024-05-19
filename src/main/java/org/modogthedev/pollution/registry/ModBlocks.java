@@ -1,4 +1,4 @@
-package org.modogthedev.pollution.main;
+package org.modogthedev.pollution.registry;
 
 import com.simibubi.create.AllBlocks;
 import net.minecraft.world.level.block.Blocks;

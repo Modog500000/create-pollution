@@ -1,9 +1,9 @@
-package org.modogthedev.pollution.main.worldPollution;
+package org.modogthedev.pollution.system.worldPollution;
 
-public class WorldPollution {
+public class WorldCurrentPollution {
     private int pollution;
 
-    public WorldPollution(int pollution) {
+    public WorldCurrentPollution(int pollution) {
         this.pollution = pollution;
     }
 

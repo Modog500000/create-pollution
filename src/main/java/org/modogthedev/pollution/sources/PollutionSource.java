@@ -2,9 +2,8 @@ package org.modogthedev.pollution.sources;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import org.modogthedev.pollution.init.EntityInit;
-import org.modogthedev.pollution.main.PollutionEntity;
+import org.modogthedev.pollution.registry.EntityInit;
+import org.modogthedev.pollution.entities.PollutionEntity;
 
 public class PollutionSource {
     public void createPollution(ServerLevel level, BlockPos pos) {

@@ -1,4 +1,4 @@
-package org.modogthedev.pollution.main;
+package org.modogthedev.pollution.registry;
 
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;

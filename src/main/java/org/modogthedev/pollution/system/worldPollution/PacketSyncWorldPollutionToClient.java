@@ -1,4 +1,4 @@
-package org.modogthedev.pollution.main.worldPollution;
+package org.modogthedev.pollution.system.worldPollution;
 
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraft.network.FriendlyByteBuf;

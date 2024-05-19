@@ -1,4 +1,4 @@
-package org.modogthedev.pollution.init;
+package org.modogthedev.pollution.registry;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -7,7 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.modogthedev.pollution.Pollution;
-import org.modogthedev.pollution.main.PollutionEntity;
+import org.modogthedev.pollution.entities.PollutionEntity;
 
 public class EntityInit {
     public static final DeferredRegister<EntityType<?>> ENITITES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Pollution.MODID);

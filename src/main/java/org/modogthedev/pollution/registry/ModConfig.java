@@ -1,4 +1,4 @@
-package org.modogthedev.pollution.main;
+package org.modogthedev.pollution.registry;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 

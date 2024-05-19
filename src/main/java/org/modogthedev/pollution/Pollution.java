@@ -10,14 +10,15 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.modogthedev.pollution.init.Messages;
-import org.modogthedev.pollution.init.EntityInit;
-import org.modogthedev.pollution.init.TileEntityInit;
-import org.modogthedev.pollution.main.ModBlocks;
-import org.modogthedev.pollution.main.ModItems;
-import org.modogthedev.pollution.main.ModParticles;
-import org.modogthedev.pollution.main.worldPollution.ChunkPollutionManager;
-import org.modogthedev.pollution.main.worldPollution.PollutionEvents;
+import org.modogthedev.pollution.client.renderer.PollutionRenderer;
+import org.modogthedev.pollution.registry.Messages;
+import org.modogthedev.pollution.registry.EntityInit;
+import org.modogthedev.pollution.registry.ModBlockEntities;
+import org.modogthedev.pollution.registry.ModBlocks;
+import org.modogthedev.pollution.registry.ModItems;
+import org.modogthedev.pollution.registry.ModParticles;
+import org.modogthedev.pollution.system.worldPollution.ChunkPollutionManager;
+import org.modogthedev.pollution.system.worldPollution.PollutionEvents;
 import org.modogthedev.pollution.util.Config;
 import org.slf4j.Logger;
 
@@ -36,7 +37,7 @@ public class Pollution {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
-        TileEntityInit.TILE_ENTITY_TYPES.register(modEventBus);
+        ModBlockEntities.TILE_ENTITY_TYPES.register(modEventBus);
         ModParticles.PARTICLE_TYPES.register(modEventBus);
         Messages.register();
 
@@ -56,6 +57,7 @@ public class Pollution {
         bus.addListener(ChunkPollutionManager::chunkLoad);
         bus.addListener(ChunkPollutionManager::chunkUnload);
         bus.addListener(ChunkPollutionManager::worldLoad);
+        bus.addListener(PollutionRenderer::tick);
     }
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code

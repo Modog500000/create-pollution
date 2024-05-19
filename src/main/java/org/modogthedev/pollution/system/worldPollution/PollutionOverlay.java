@@ -1,12 +1,11 @@
-package org.modogthedev.pollution.main.worldPollution;
+package org.modogthedev.pollution.system.worldPollution;
 
 import com.simibubi.create.content.equipment.goggles.GogglesItem;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import org.modogthedev.pollution.main.ModConfig;
-import org.modogthedev.pollution.util.Config;
+import org.modogthedev.pollution.registry.ModConfig;
 
 @OnlyIn(Dist.CLIENT)
 public class PollutionOverlay {

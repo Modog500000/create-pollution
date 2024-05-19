@@ -1,4 +1,4 @@
-package org.modogthedev.pollution.init;
+package org.modogthedev.pollution.registry;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -7,8 +7,8 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import org.modogthedev.pollution.Pollution;
-import org.modogthedev.pollution.main.worldPollution.PacketSyncWorldCurrentPollutionToClient;
-import org.modogthedev.pollution.main.worldPollution.PacketSyncWorldPollutionToClient;
+import org.modogthedev.pollution.system.worldPollution.PacketSyncWorldCurrentPollutionToClient;
+import org.modogthedev.pollution.system.worldPollution.PacketSyncWorldPollutionToClient;
 
 public class Messages {
     private static SimpleChannel INSTANCE;

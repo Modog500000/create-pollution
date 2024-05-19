@@ -1,4 +1,4 @@
-package org.modogthedev.pollution.main.worldPollution;
+package org.modogthedev.pollution.system.worldPollution;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
 import org.jetbrains.annotations.NotNull;
-import org.modogthedev.pollution.init.Messages;
+import org.modogthedev.pollution.registry.Messages;
 import org.slf4j.Logger;
 
 import javax.annotation.Nonnull;

@@ -6,8 +6,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import org.modogthedev.pollution.init.EntityInit;
-import org.modogthedev.pollution.main.PollutionEntity;
+import org.modogthedev.pollution.registry.EntityInit;
+import org.modogthedev.pollution.entities.PollutionEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -20,10 +20,12 @@ public abstract class ModFurnacePollution {
         assert level != null;
         if (state.hasProperty(AbstractFurnaceBlock.LIT)) {
             if ((float) RandomSource.create().nextInt(0, 1000) /100 < 0.1F) {
-                PollutionEntity pollutionEntity = EntityInit.POLLUTION_ENTITY.get().create(level);
-                assert pollutionEntity != null;
-                pollutionEntity.setPos(pos.getX()+.5, pos.getY()+1, pos.getZ()+.5);
-                level.addFreshEntity(pollutionEntity);
+                if (level.dimension() == Level.OVERWORLD) {
+                    PollutionEntity pollutionEntity = EntityInit.POLLUTION_ENTITY.get().create(level);
+                    assert pollutionEntity != null;
+                    pollutionEntity.setPos(pos.getX() + .5, pos.getY() + 1, pos.getZ() + .5);
+                    level.addFreshEntity(pollutionEntity);
+                }
             }
         }
     }

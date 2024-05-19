@@ -11,6 +11,8 @@
     "ModFurnacePollution"
   ],
   "client": [
+    "FogRendererMixin",
+    "LevelRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

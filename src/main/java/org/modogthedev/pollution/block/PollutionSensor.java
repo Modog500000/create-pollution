@@ -1,6 +1,5 @@
 package org.modogthedev.pollution.block;
 
-import com.simibubi.create.foundation.block.WrenchableDirectionalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -20,8 +19,9 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import org.modogthedev.pollution.block.tile.PollutionSensorTile;
-import org.modogthedev.pollution.init.TileEntityInit;
+import org.modogthedev.pollution.block.blockentity.PollutionSensorBlockEntity;
+import org.modogthedev.pollution.registry.ModBlockEntities;
+import org.modogthedev.pollution.util.TickableBlockEntity;
 
 public class PollutionSensor extends HorizontalDirectionalBlock implements EntityBlock {
     public static IntegerProperty POWER = BlockStateProperties.POWER;
@@ -66,7 +66,7 @@ public class PollutionSensor extends HorizontalDirectionalBlock implements Entit
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return TileEntityInit.POLLUTION_SENSOR.get().create(pos, state);
+        return ModBlockEntities.POLLUTION_SENSOR.get().create(pos, state);
     }
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -76,7 +76,7 @@ public class PollutionSensor extends HorizontalDirectionalBlock implements Entit
     }
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-        return type == TileEntityInit.POLLUTION_SENSOR.get() ? PollutionSensorTile::tick : null;
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return TickableBlockEntity.getTickerHelper(level);
     }
 }

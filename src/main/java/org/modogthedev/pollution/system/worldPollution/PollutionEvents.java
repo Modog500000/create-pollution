@@ -1,4 +1,4 @@
-package org.modogthedev.pollution.main.worldPollution;
+package org.modogthedev.pollution.system.worldPollution;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.event.TickEvent;

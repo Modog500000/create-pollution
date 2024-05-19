@@ -1,14 +1,11 @@
-package org.modogthedev.pollution.main.worldPollution;
+package org.modogthedev.pollution.system.worldPollution;
 
-import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.profiling.jfr.event.WorldLoadFinishedEvent;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.level.ChunkEvent;
 import net.minecraftforge.event.level.LevelEvent;
-import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +14,6 @@ public class ChunkPollutionManager {
     public static List<ChunkPos> chunkPosList = new ArrayList<ChunkPos>();
     public static List<ChunkPos> toRemove = new ArrayList<ChunkPos>();
     public static List<ChunkPos> toAdd = new ArrayList<ChunkPos>();
-    private static final Logger LOGGER = LogUtils.getLogger();
     public static boolean HOLD = false;
 
     public static void onChunkTick(TickEvent.LevelTickEvent event) {
@@ -49,6 +45,8 @@ public class ChunkPollutionManager {
                         double moveAmount = Math.ceil(ModWorldPollution.get(level).getPollution(pos)*0.001);
                         ModWorldPollution.get(level).softChangePollution(pos, (int) -moveAmount);
                         ModWorldPollution.get(level).changePollution(newPos, (int) moveAmount);
+                        BlockPos rainPos = new BlockPos(pos.getX()+Math.random()*16-8,pos.getY(),pos.getZ()+Math.random()*16-8);
+                        AcidRain.runAcidRain(rainPos,level,ModWorldPollution.get(level).getPollution(pos));
                     }
                 }
             }

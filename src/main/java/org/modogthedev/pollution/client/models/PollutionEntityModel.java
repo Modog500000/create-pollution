@@ -12,7 +12,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import org.modogthedev.pollution.Pollution;
-import org.modogthedev.pollution.main.PollutionEntity;
+import org.modogthedev.pollution.entities.PollutionEntity;
 
 public class PollutionEntityModel<T extends PollutionEntity> extends EntityModel<T> {	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Pollution.MODID, "pollution"), "main");
